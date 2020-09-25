@@ -11,17 +11,10 @@
 
 ตัวอย่างคำที่จะค้นหา | Survey	| IFCC (ODF) |	Wall Box	| Micro Duct Vertical	| Micro Duct Horizontal
 ------------ | ------------- | ------------- | ------------- | ------------- | -------------
-<<<<<<< HEAD
 U&I Thonglor |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> +ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>
 Bel gravia |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
 Topview |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
 Fortune condo town 2 (ตึก 1-3) |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
-=======
-U&I Thonglor |```diff + ดำเนินการแล้วเสร็จ ```| ```diff +ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```
-Bel gravia |```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff ! รอเข้าดำเนินนการ ```
-Topview |```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff ! รอเข้าดำเนินนการ ```
-Fortune condo town 2 (ตึก 1-3) |```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff + ดำเนินการแล้วเสร็จ ```| ```diff ! รอเข้าดำเนินนการ ```
->>>>>>> 993d3580aefa38fc0e093f795c36f3dcf284c8f7
 
 
 ### Overall
