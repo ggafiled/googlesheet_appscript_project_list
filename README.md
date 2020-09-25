@@ -10,20 +10,20 @@
   - แชทบอทสำหรับสั่งเรียกใช้งานฟังก์ชันภายใน google app script เพื่อทำการค้นหาและแสดงสถานะงาน
 
 ตัวอย่างคำที่จะค้นหา | Survey	| IFCC (ODF) |	Wall Box	| Micro Duct Vertical	| Micro Duct Horizontal
------------- | ------------- | ------------- | ------------- | -------------
-U&I Thonglor |```diff + ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ ```
-Bel gravia |```diff + ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|! รอเข้าดำเนินนการ ```
-Topview |```diff + ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|! รอเข้าดำเนินนการ ```
-Fortune condo town 2 (ตึก 1-3) |```diff + ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|+ ดำเนินการแล้วเสร็จ|! รอเข้าดำเนินนการ ```
+------------ | ------------- | ------------- | ------------- | ------------- | -------------
+U&I Thonglor |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> +ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>
+Bel gravia |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
+Topview |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
+Fortune condo town 2 (ตึก 1-3) |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
 
 
 ### Overall
-ตัวอย่างข้อมูลที่จะทำการค้นหา
-![Main Panel UI](https://github.com/ggafiled/googlesheet_appscript_stock_update/blob/master/img/googlesheet_appscript_project_list_01.PNG)
-![Main Panel UI](https://github.com/ggafiled/googlesheet_appscript_stock_update/blob/master/img/googlesheet_appscript_project_list_02.PNG)
-
-ตัวอย่างหน้าจอการใช้งานคำสั่ง Chatbot 
-![Terra Bot](https://github.com/ggafiled/googlesheet_appscript_stock_update/blob/master/img/terra-bot01.jpg)
+#### ตัวอย่างข้อมูลที่จะทำการค้นหา
+![Main Panel UI](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/googlesheet_appscript_project_list_01.PNG)
+#### ตัวอย่างข้อมูลที่จะทำการค้นหา
+![Main Panel UI](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/googlesheet_appscript_project_list_02.PNG)
+#### ตัวอย่างหน้าจอการใช้งานคำสั่ง Chatbot 
+![Terra Bot](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra-project-bot01.jpg)
 
 ### License
 GNU
