@@ -11,10 +11,10 @@
 
 ตัวอย่างคำที่จะค้นหา | Survey	| IFCC (ODF) |	Wall Box	| Micro Duct Vertical	| Micro Duct Horizontal
 ------------ | ------------- | ------------- | ------------- | ------------- | -------------
-U&I Thonglor |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> +ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>
-Bel gravia |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
-Topview |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
-Fortune condo town 2 (ตึก 1-3) |<p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:green'> + ดำเนินการแล้วเสร็จ </p>| <p style='color:orange'> ! รอเข้าดำเนินนการ </p>
+U&I Thonglor |<p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> +ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>
+Bel gravia |<p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-text-orange-light"> ! รอเข้าดำเนินนการ </p>
+Topview |<p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-text-orange-light"> ! รอเข้าดำเนินนการ </p>
+Fortune condo town 2 (ตึก 1-3) |<p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-green"> + ดำเนินการแล้วเสร็จ </p>| <p class="text-text-orange-light"> ! รอเข้าดำเนินนการ </p>
 
 
 ### Overall
