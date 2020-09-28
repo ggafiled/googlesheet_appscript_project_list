@@ -49,7 +49,7 @@ Fortune condo town 2 (ตึก 1-3) | ดำเนินการแล้ว�
 ![Expand](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-05.JPG)
 
 6. ทำการสร้างกลุ่มสนทนาบนแพลตฟอร์ม Line Application จากนั้นให้ทำการเชิญ Line notify และ Line bot ที่ทำการสร้างไว้เข้ากลุ่ม 
-![Expand](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-06.jpg)
+<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-06.jpg" alt="Terra Bot" width="340" height="480">
 
 7. ทำการเพิ่ม Property เพื่อเก็บค่าที่จะใช้ภายในโปรเจ็ค ดังนี้
 
