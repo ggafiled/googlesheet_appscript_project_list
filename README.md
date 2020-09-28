@@ -62,7 +62,7 @@ LINE_NOTIFY_TOKEN | โทเคนของ Line notify | ใส่ค่าว
 LINE_CHANEL_ACCESS_TOKEN | โทเคนสำหรับให้บอทใช้ส่งข้อความกลับไปยังกลุ่ม | ได้มาจากขั้นตอนที่  ``` 4. ```
 
 **8.** ทำการโหลดไฟล์โค้ดนี้ลงเครื่อง ด้วยคำสั่ง 
-```javascript
+```js
 
 git clone https://github.com/ggafiled/googlesheet_appscript_project_list.git
 
