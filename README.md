@@ -61,7 +61,7 @@ LINE_NOTIFY_TOKEN | โทเคนของ Line notify | ใส่ค่าว
 LINE_CHANEL_ACCESS_TOKEN | โทเคนสำหรับให้บอทใช้ส่งข้อความกลับไปยังกลุ่ม | ได้มาจากขั้นตอนที่  ```html 4. ```
 
 8. ที่ไฟล์ ```html .clasp.json  ``` กรอกรหัสสคริปต์
-หาได้จาก ![Expand](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-06.jpg)
+หาได้จาก ![Expand](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-09.jpg)
 ```json
 {
     "scriptId": "นำรหัสสคริปต์ของโปรเจ็คเรามาใส่ตรงนี้",
