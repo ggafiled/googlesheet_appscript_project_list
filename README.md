@@ -62,7 +62,7 @@ LINE_NOTIFY_TOKEN | โทเคนของ Line notify | ใส่ค่าว
 LINE_CHANEL_ACCESS_TOKEN | โทเคนสำหรับให้บอทใช้ส่งข้อความกลับไปยังกลุ่ม | ได้มาจากขั้นตอนที่  ``` 4. ```
 
 **8.** ทำการโหลดไฟล์โค้ดนี้ลงเครื่อง ด้วยคำสั่ง 
-```js
+```diff
 
 git clone https://github.com/ggafiled/googlesheet_appscript_project_list.git
 
@@ -83,7 +83,7 @@ https://script.google.com/home/usersettings
 
 **9.** ที่ไฟล์ ```html .clasp.json  ``` กรอกรหัสสคริปต์
 หาได้จาก ![Expand](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-09.jpg)
-```json
+```js
 
 {
     "scriptId": "นำรหัสสคริปต์ของโปรเจ็คเรามาใส่ตรงนี้",
@@ -93,7 +93,7 @@ https://script.google.com/home/usersettings
 ```
 
 **10.** หลังจากตั้งค่าสิ่งที่ต้องการทั้งหมดแล้วให้ทำการอัพโค้ดขึ้น app script cloud ด้วยคำสั่ง
-```javascript
+```diff
 
 npm run deploy:prod
 
