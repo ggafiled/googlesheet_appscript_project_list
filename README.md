@@ -106,4 +106,4 @@ npm run deploy:prod
 <img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra-project-bot01.jpg" alt="Terra Bot" width="340" height="480">
 
 # Copyright 🏛
-Copyright (c) See [LICENSE](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/LICENSE).
+Copyright (c)Ggafiled (Nattapol Krobklang):See [LICENSE](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/LICENSE).
