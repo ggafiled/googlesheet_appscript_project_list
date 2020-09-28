@@ -6,8 +6,8 @@ const {
 
 const LINE_NOTIFY_URL = 'https://notify-api.line.me/api/notify';
 const LINE_MESSAGE_REPLY_URL = 'https://api.line.me/v2/bot/message/reply';
-const LINE_NOTIFY_TOKEN = 'p9QvBVBeh3apZU9mvJxHC9oqMIL773v0Fs7JgvU6elj';
-const LINE_CHANEL_ACCESS_TOKEN = 'dUsXN61Ww5fSwME8jFrxYHa3qD5oQav6ut6IFQlPfOxh5QnWEdi4sCLLONQAo3381MtZlOWKbK8OdHmOjc0+8FnsYrrMEFKIxGH+D3lQVr4J5pqtLYreOu/8FMOCRr1XB0P6uKBtoudfOmuCTicZIAdB04t89/1O/w1cDnyilFU=';
+const LINE_NOTIFY_TOKEN = 'JWGtYX2OXrA4ljuO5DQ8Z5DuKRgUZMHOcuQCQstGD6n';
+const LINE_CHANEL_ACCESS_TOKEN = '0uYr/z/J0EdY8OJH4oFH4ba4mDFm7SS+sFRACFgYGhmOcE7yDVEYW5vaqUkF0BnnkC1/pe+nFl572DHeCzgTxwva2i2hxNFjYJTQpUvB8zm0jHdBMIDulkLpUGBzm6ccGjoRtnmTSPjaqQ5PKBmqKAdB04t89/1O/w1cDnyilFU=';
 const MESSAGE_TYPE = {
     NORMAL: 'Normal',
     QUICKREPLY: 'Quickreply'
