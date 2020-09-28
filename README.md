@@ -23,7 +23,7 @@ Fortune condo town 2 (ตึก 1-3) | ดำเนินการแล้ว�
 ### ตัวอย่างข้อมูลที่จะทำการค้นหา
 ![Main Panel UI](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/googlesheet_appscript_project_list_02.PNG)
 ### ตัวอย่างหน้าจอการใช้งานคำสั่ง Chatbot 
-<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra-project-bot01.jpg" alt="Terra Bot" width="960" height="640">
+<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra-project-bot01.jpg" alt="Terra Bot" width="640" height="960">
 
 # License 🏛
 GNU
