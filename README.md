@@ -3,13 +3,13 @@
 # Google sheet stock with app script (ระบบอัพเดตสต็อคสินค้า)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-[![Company Logo](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-10.jpg)](https://github.com/ggafiled)
+[![Company Logo](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra.jpg)](https://github.com/ggafiled)
 
 ระบบเบิกและจัดสต็อคอุปกรณ์ในคลังบนแพทฟอร์ม google sheet และ app script โดยมีฟังก์ชันการใช้งานตามนี้ Version 1.0.0
 
   - สามารถแสดงหน้าต่างการใช้งานเมื่อเปิดเข้าไฟล์ได้
   - แชทบอทสำหรับสั่งเรียกใช้งานฟังก์ชันภายใน google app script เพื่อทำการค้นหาและแสดงสถานะงาน
-  - ค้นหาและเลือกดูข้อมูลบน LIFF (LINE FRONTEND FRAMEWORK) ![Demo](https://script.google.com/macros/s/AKfycbxtBUEiPCrWkepUJm0cmXfhqoM0IZqcXEixvSFs/exec?v=project-list)
+  - ค้นหาและเลือกดูข้อมูลบน LIFF (LINE FRONTEND FRAMEWORK) [Demo](https://script.google.com/macros/s/AKfycbxtBUEiPCrWkepUJm0cmXfhqoM0IZqcXEixvSFs/exec?v=project-list)
 
 ตัวอย่างคำที่จะค้นหา | Survey	| IFCC (ODF) |	Wall Box	| Micro Duct Vertical	| Micro Duct Horizontal
 ------------ | ------------- | ------------- | ------------- | ------------- | -------------
