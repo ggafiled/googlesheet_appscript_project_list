@@ -4,11 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= title ?>
-    </title>
-    <link rel="icon" href="https://scontent.fbkk22-4.fna.fbcdn.net/v/t1.0-9/120255176_3346579338756362_2357071726779952401_n.jpg?_nc_cat=111&_nc_sid=dbeb18&_nc_eui2=AeEVUb-0d4LcisMTO3aDozERMgFIZlpIi6UyAUhmWkiLpXOFSv04EFE4O9b02ZE2F9z0OztD2vxWCg_TBxbA5jSB&_nc_ohc=b5zUwSjAKY8AX_P1gN7&_nc_ht=scontent.fbkk22-4.fna&oh=1aee43c61c82b9423c691363354159db&oe=5F9BAD44"
-        type="image/gif" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -16,17 +12,63 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://static.line-scdn.net/liff/edge/2.1/liff.js"></script>
+    <style>
+        body {
+            margin-bottom: 25px;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        td.details-control {
+            background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
+            cursor: pointer;
+        }
+        
+        tr.shown td.details-control {
+            background: url('https://datatables.net/examples/resources/details_close.png') no-repeat center center;
+        }
+        
+        .no-js #loader {
+            display: none;
+        }
+        
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+        
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="d-flex d-column">
+        <div class="se-pre-con">
+        </div>
+        <p class="mx-auto my-auto align-middle">กำลังดึงข้อมูลเข้าค่ะ...</p>
+    </div>
     <nav class="navbar navbar-expand-sm bg-white navbar-light">
-        <a class="navbar-brand" href="#">
-            <img src="https://www.blisstel.co.th/wp-content/uploads/2018/07/terra-e1531841401859.png" alt="Logo">
-        </a>
-        <h2>ทะเบียนติดตามสถานะการทำงาน</h2>
+        <div class="mx-auto order-0">
+            <div class="d-flex flex-column">
+                <a class="navbar-brand mx-auto" href="#">
+                    <img src="https://www.blisstel.co.th/wp-content/uploads/2018/07/terra-e1531841401859.png" alt="Logo">
+                </a>
+                <h2>ทะเบียนติดตามสถานะการทำงาน</h2>
+            </div>
+        </div>
     </nav>
     <div class="container">
         <table id="example" class="display nowrap" style="width:100%">
@@ -37,8 +79,35 @@
 </html>
 
 <script>
+    function format(d) {
+        // `d` is the original data object for the row
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+            '<tr>' +
+            '<td>สำรวจออกแบบ :</td>' +
+            '<td>' + d["Survey"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>IFCC (ODF) :</td>' +
+            '<td>' + d["IFCC (ODF)"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>Wall Box :</td>' +
+            '<td>' + d["Wall Box"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>Micro Duct Vertical :</td>' +
+            '<td>' + d["Micro Duct Vertical"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>Micro Duct Horizontal :</td>' +
+            '<td>' + d["Micro Duct Horizontal"] + '</td>' +
+            '</tr>' +
+            '</table>';
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
         var dataSet = [];
+        var table = null;
 
         liff.init({
             liffId: "1655031884-bjPLyNBR"
@@ -47,9 +116,14 @@
         function onSuccess(array) {
             dataSet = JSON.parse(array);
 
-            $('#example').DataTable({
+            table = $('#example').DataTable({
                 data: dataSet,
                 columns: [{
+                    "className": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                }, {
                     title: "Project",
                     data: "Project"
                 }, {
@@ -68,10 +142,27 @@
                     }
                 }]
             });
+
+            $(".se-pre-con").hide("slow");
         }
 
         google.script.run.withSuccessHandler(onSuccess)
             .filterByValue();
+
+        $('#example').on('click', 'td.details-control', function() {
+            var tr = $(this).closest('tr');
+            var row = table.row(tr);
+
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            } else {
+                // Open this row
+                row.child(format(row.data())).show();
+                tr.addClass('shown');
+            }
+        });
 
     });
 </script>
