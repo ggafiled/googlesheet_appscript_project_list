@@ -1,13 +1,9 @@
-import {
-    doPost
-} from './server/webapp';
-import {
-    filterByValue
-} from './functions/utils';
+import { doPost } from './server/webapp';
+import { filterByValue } from './functions/utils';
 
 // eslint-disable-next-line no-global-assign
 Logger = BetterLog.useSpreadsheet(
-    PropertiesService.getScriptProperties().getProperty('GOOGLE_SHEET_ID').toString()
+  PropertiesService.getScriptProperties().getProperty('GOOGLE_SHEET_ID').toString()
 );
 Tamotsu.initialize();
 
