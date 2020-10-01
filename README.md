@@ -3,6 +3,7 @@
 # Google sheet stock with app script (ระบบอัพเดตสต็อคสินค้า)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+[![Company Logo](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-10.jpg)](https://github.com/ggafiled)
 
 ระบบเบิกและจัดสต็อคอุปกรณ์ในคลังบนแพทฟอร์ม google sheet และ app script โดยมีฟังก์ชันการใช้งานตามนี้ Version 1.0.0
 
@@ -101,8 +102,13 @@ npm run deploy:prod
 # Overall 🍚🍣 (ตัวอย่างภาพรวม)
 ### ตัวอย่างข้อมูลที่จะทำการค้นหา
 ![Main Panel UI](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/googlesheet_appscript_project_list_02.PNG)
+
 ### ตัวอย่างหน้าจอการใช้งานคำสั่ง Chatbot 
 <img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra-project-bot01.jpg" alt="Terra Bot" width="340" height="480">
+
+### ตัวอย่างหน้าจอการใช้งาน LIFF
+<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-10.jpg" alt="Terra Bot">
+
 
 # Copyright 🏛
 Copyright (c)Ggafiled (Nattapol Krobklang):See [LICENSE](https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/LICENSE).
