@@ -44,7 +44,8 @@ const render = (file, argsObject) => {
             tmp[key] = argsObject[key];
         });
     }
-    return tmp.evaluate().setTitle("- 🕵️‍♀️ Project List -").setFaviconUrl("https://scontent.fbkk22-4.fna.fbcdn.net/v/t1.0-9/120255176_3346579338756362_2357071726779952401_n.jpg?_nc_cat=111&_nc_sid=dbeb18&_nc_eui2=AeEVUb-0d4LcisMTO3aDozERMgFIZlpIi6UyAUhmWkiLpXOFSv04EFE4O9b02ZE2F9z0OztD2vxWCg_TBxbA5jSB&_nc_ohc=b5zUwSjAKY8AX_P1gN7&_nc_ht=scontent.fbkk22-4.fna&oh=1aee43c61c82b9423c691363354159db&oe=5F9BAD44");
+    return tmp.evaluate().setTitle("- 🕵️‍♀️ Project List -")
+        .setFaviconUrl("https://raw.githubusercontent.com/ggafiled/googlesheet_appscript_project_list/master/img/favicon.ico");
 }
 
 export {
