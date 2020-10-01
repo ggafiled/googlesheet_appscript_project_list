@@ -14,13 +14,30 @@ const isEmpty = (text) => {
     return text === '' ? true : false;
 }
 
-const filterByValue = (array, string) => {
-    return array.filter(o =>
-        Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
+const filterByValue = (string) => {
+    Logger.log("[filterByValue()]: starting function.");
+    const Progress = Tamotsu.Table.define({
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+    });
+    if (string) {
+        var finalarray = Progress.where((row) => {
+            String(row[1]).trim() !== ""
+        }).all().filter(o =>
+            Object.keys(o).some(k => String(o[k]).toLowerCase().includes(string.toLowerCase())))
+    } else {
+        var finalarray = Progress.where((row) => {
+            return String(row["Project"]).trim() !== ''
+        }).all();
+    }
+
+    Logger.log("[filterByValue()]" + JSON.stringify(finalarray));
+    return JSON.stringify(finalarray);
 }
 
 const render = (file, argsObject) => {
-    var tmp = HtmlService.createHtmlOutputFromFile(file);
+    var tmp = HtmlService.createTemplateFromFile(file);
     if (argsObject) {
         var keys = Object.keys(argsObject);
         keys.forEach(function(key) {

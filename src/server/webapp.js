@@ -1,6 +1,6 @@
 const { replyMessage, MESSAGE_TYPE } = require('../functions/LineBot');
 
-const { filterByValue, render } = require('../functions/utils');
+const { render } = require('../functions/utils');
 
 const Route = {};
 Route.path = function (routeName, callback) {
@@ -52,20 +52,13 @@ const doPost = (e) => {
 };
 
 function loadIndexUi() {
-  const Progress = Tamotsu.Table.define({
-    sheetName: 'Progress',
-    rowShift: 1,
-    columnShift: 0,
-  });
-  const projectList = filterByValue(Progress.all(), 'คอนโด');
   return render('index', {
     title: '- 🕵️‍♀️ Project List -',
-    projectList,
   });
 }
 
 const doGet = (e) => {
-  Route.path('path', loadIndexUi);
+  Route.path('project-list', loadIndexUi);
 
   if (Route[e.parameters.v]) {
     return Route[e.parameters.v]();

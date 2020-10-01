@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=chorme">
     <title>
         <?= title ?>
     </title>
@@ -17,61 +16,62 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/liff.js"></script>
 </head>
-<style>
-    h1 {
-        color: rgb(250, 249, 245);
-        font-size: 20px;
-        text-align: center;
-    }
-    
-    body {
-        font: size 200%;
-        background: #f8f8f8;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-    
-    .text {
-        margin: 10px 0px 10px 0px;
-        text-align: center;
-    }
-</style>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #151616;">
-        <a class="navbar-brand">TERRA SEARCH</a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-            </form>
-        </div>
+    <nav class="navbar navbar-expand-sm bg-white navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://www.blisstel.co.th/wp-content/uploads/2018/07/terra-e1531841401859.png" alt="Logo">
+        </a>
+        <h2>ทะเบียนติดตามสถานะการทำงาน</h2>
     </nav>
     <div class="container">
-        <img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra.jpg" alt="Terra Logo">
-        <label for="username">กรอกชื่อโครงการ : </label>
-        <input type="text" class="form-control" placeholder="กรอกชื่อโครงการ">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหา</button>
+        <table id="example" class="display nowrap" style="width:100%">
+        </table>
     </div>
-    </br>
-    <br>
-    <div class="container">
-        <div class="row">
-            <h1>Hello World</h1>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="container">
-                        <p>โครงการแมวเขียว</p>
-                        <p>โครงการแมวแกง</p>
-                        <p>โครงการคนเหงา</p>
-                        <p>โครงการหาเพื่อนแก้เหงา</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 </body>
 
 </html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var dataSet = [];
+
+        liff.init({
+            liffId: "1655031884-bjPLyNBR"
+        }, () => {}, err => console.error(err.code, error.message));
+
+        function onSuccess(array) {
+            dataSet = JSON.parse(array);
+
+            $('#example').DataTable({
+                data: dataSet,
+                columns: [{
+                    title: "Project",
+                    data: "Project"
+                }, {
+                    title: "ชื่อผู้ติดต่อ",
+                    data: "ชื่อผู้ติดต่อ",
+                    render: function(data, type, row, meta) {
+                        return data === '' ?
+                            '-' : data;
+                    }
+                }, {
+                    title: "เบอร์โทร",
+                    data: "เบอร์โทร",
+                    render: function(data, type, row, meta) {
+                        return data === '' ?
+                            '-' : data;
+                    }
+                }]
+            });
+        }
+
+        google.script.run.withSuccessHandler(onSuccess)
+            .filterByValue();
+
+    });
+</script>

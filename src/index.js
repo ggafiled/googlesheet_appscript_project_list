@@ -1,4 +1,4 @@
-import { doPost } from './server/webapp';
+import { doPost, doGet } from './server/webapp';
 import { filterByValue } from './functions/utils';
 
 // eslint-disable-next-line no-global-assign
@@ -8,4 +8,5 @@ Logger = BetterLog.useSpreadsheet(
 Tamotsu.initialize();
 
 global.doPost = doPost;
+global.doGet = doGet;
 global.filterByValue = filterByValue;
