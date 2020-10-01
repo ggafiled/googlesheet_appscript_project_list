@@ -1,49 +1,89 @@
-const { replyMessage, MESSAGE_TYPE } = require('../functions/LineBot');
+const {
+    replyMessage,
+    MESSAGE_TYPE
+} = require('../functions/LineBot');
 
-const doPost = (e) => {
-  Logger.log('[doPost()] : starting function.');
-  const data = JSON.parse(e.postData.contents);
-  Logger.log(`[doPost()] after starting function: ${JSON.stringify(data)}`);
+const {
+    filterByValue,
+    render
+} = require('../functions/utils');
 
-  const Progress = Tamotsu.Table.define({
-    sheetName: 'Progress',
-    rowShift: 1,
-    columnShift: 0,
-  });
-
-  const messages = data.events[0].message.text;
-  Logger.log(`[doPost()] extract body data: ${messages}`);
-
-  const message = messages.trim();
-
-  try {
-    if (message !== '') {
-      const query = Progress.where({
-        Project: message,
-      }).first();
-
-      if (query !== undefined && query !== null) {
-        Logger.log(`[doPost()] query: ${messages}`);
-        replyMessage(
-          data.events[0].replyToken,
-          `สำรวจออกแบบ: ${query.Survey}\nติดตั้ง IFCC : ${query['IFCC (ODF)']}\nWall Box : ${query['Wall Box']}\nMicro Duct1 : ${query['Micro Duct Vertical']}\nMicro Duct2 : ${query['Micro Duct Horizontal']}`,
-          MESSAGE_TYPE.NORMAL
-        );
-      } else {
-        Logger.log(`[doPost()] ไม่เข้าเงื่อนไข 🍜🍣🍤`);
-      }
-    }
-  } catch (error) {
-    Logger.log(`[doPost()] error: ${error}`);
-  }
-
-  return ContentService.createTextOutput(
-    JSON.stringify({
-      status: 'ok',
-    })
-  ).setMimeType(ContentService.JSON);
+var Route = {};
+Route.path = function(routeName, callback) {
+    Route[routeName] = callback;
 };
 
+const doPost = (e) => {
+    Logger.log('[doPost()] : starting function.');
+    const data = JSON.parse(e.postData.contents);
+    Logger.log(`[doPost()] after starting function: ${JSON.stringify(data)}`);
+
+    const Progress = Tamotsu.Table.define({
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+    });
+
+    const messages = data.events[0].message.text;
+    Logger.log(`[doPost()] extract body data: ${messages}`);
+
+    const message = messages.trim();
+
+    try {
+        if (message !== '') {
+            const query = Progress.where({
+                Project: message,
+            }).first();
+
+            if (query !== undefined && query !== null) {
+                Logger.log(`[doPost()] query: ${messages}`);
+                replyMessage(
+                    data.events[0].replyToken,
+                    `สำรวจออกแบบ: ${query.Survey}\nติดตั้ง IFCC : ${query['IFCC (ODF)']}\nWall Box : ${query['Wall Box']}\nMicro Duct1 : ${query['Micro Duct Vertical']}\nMicro Duct2 : ${query['Micro Duct Horizontal']}`,
+                    MESSAGE_TYPE.NORMAL
+                );
+            } else {
+                Logger.log(`[doPost()] ไม่เข้าเงื่อนไข 🍜🍣🍤`);
+            }
+        }
+    } catch (error) {
+        Logger.log(`[doPost()] error: ${error}`);
+    }
+
+    return ContentService.createTextOutput(
+        JSON.stringify({
+            status: 'ok',
+        })
+    ).setMimeType(ContentService.JSON);
+};
+
+function loadIndexUi() {
+    const Progress = Tamotsu.Table.define({
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+    });
+    var projectList = filterByValue(Progress.all(), "คอนโด");
+    return render("index", {
+        title: "- 🕵️‍♀️ Project List -",
+        projectList: projectList
+    });
+}
+
+const doGet = (e) => {
+
+    Route.path("path", loadIndexUi);
+
+    if (Route[e.parameters.v]) {
+        return Route[e.parameters.v]();
+    } else {
+        return render("404");
+    }
+}
+
+
+
 module.exports = {
-  doPost,
+    doPost,
+    doGet
 };

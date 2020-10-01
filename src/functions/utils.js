@@ -14,8 +14,26 @@ const isEmpty = (text) => {
     return text === '' ? true : false;
 }
 
+const filterByValue = (array, string) => {
+    return array.filter(o =>
+        Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
+}
+
+const render = (file, argsObject) => {
+    var tmp = HtmlService.createHtmlOutputFromFile(file);
+    if (argsObject) {
+        var keys = Object.keys(argsObject);
+        keys.forEach(function(key) {
+            tmp[key] = argsObject[key];
+        });
+    }
+    return tmp.evaluate();
+}
+
 export {
     setDataToStore,
     getDataFromRange,
-    isEmpty
+    isEmpty,
+    filterByValue,
+    render
 };

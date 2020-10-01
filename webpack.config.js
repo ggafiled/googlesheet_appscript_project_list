@@ -78,12 +78,11 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
-            patterns: [
-                // {
-                //     from: getSrcPath('**/*.html'),
-                //     flatten: true,
-                //     to: destination,
-                // },
+            patterns: [{
+                    from: getSrcPath('**/*.html'),
+                    flatten: true,
+                    to: destination,
+                },
                 {
                     from: getSrcPath('../appsscript.json'),
                     to: destination,
