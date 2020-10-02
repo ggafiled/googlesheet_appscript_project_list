@@ -23,7 +23,7 @@ const filterByValue = (string) => {
     });
     if (string) {
         var finalarray = Progress.where((row) => {
-            String(row[1]).trim() !== ""
+            return String(row["Project"]).trim() !== ''
         }).all().filter(o =>
             Object.keys(o).some(k => String(o[k]).toLowerCase().includes(string.toLowerCase())))
     } else {
