@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -16,47 +16,25 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://static.line-scdn.net/liff/edge/2.1/liff.js"></script>
-    <style>
-        body {
-            margin-bottom: 25px;
-            font-family: 'Sarabun', sans-serif;
-        }
-        
-        td.details-control {
-            background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
-            cursor: pointer;
-        }
-        
-        tr.shown td.details-control {
-            background: url('https://datatables.net/examples/resources/details_close.png') no-repeat center center;
-        }
-        
-        .no-js #loader {
-            display: none;
-        }
-        
-        .js #loader {
-            display: block;
-            position: absolute;
-            left: 100px;
-            top: 0;
-        }
-        
-        .se-pre-con {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
-        }
-    </style>
+    <title>Index</title>
 </head>
+<style>
+    body {
+        margin-bottom: 25px;
+        font-family: 'Sarabun', sans-serif;
+    }
+    
+    td.details-control {
+        background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
+        cursor: pointer;
+    }
+    
+    tr.shown td.details-control {
+        background: url('https://datatables.net/examples/resources/details_close.png') no-repeat center center;
+    }
+</style>
 
 <body>
-    <div class="se-pre-con">
-        <p class="mx-auto align-middle">กำลังดึงข้อมูลเข้าค่ะ...</p>
     </div>
     <nav class="navbar navbar-expand-sm bg-white navbar-light">
         <div class="mx-auto order-0">
@@ -69,7 +47,7 @@
         </div>
     </nav>
     <div class="container">
-        <table id="example" class="display nowrap" style="width:100%">
+        <table id="tabel1">
         </table>
     </div>
 </body>
@@ -81,41 +59,65 @@
         // `d` is the original data object for the row
         return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
-            '<td>สำรวจออกแบบ :</td>' +
-            '<td>' + d["Survey"] + '</td>' +
+            '<td>ที่อยู่ :</td>' +
+            '<td>' + d["ที่อยู่"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>IFCC (ODF) :</td>' +
-            '<td>' + d["IFCC (ODF)"] + '</td>' +
+            '<td>ชื่อผู้ติดต่อ :</td>' +
+            '<td>' + d["ชื่อผู้ติดต่อ"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>เบอร์โทร :</td>' +
+            '<td>' + d["เบอร์โทร"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>EMail :</td>' +
+            '<td>' + d["EMail"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>จำนวน Tower :</td>' +
+            '<td>' + d["จำนวน Tower"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>จำนวนชั้นต่ออาคาร :</td>' +
+            '<td>' + d["จำนวนชั้นต่ออาคาร"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>สำรวจออกแบบ :</td>' +
+            '<td>' + d["สำรวจออกแบบ"] + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>ติดตั้ง IFCC (ODF) :</td>' +
+            '<td>' + d["ติดตั้ง IFCC (ODF)"] + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Wall Box :</td>' +
             '<td>' + d["Wall Box"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Micro Duct Vertical :</td>' +
-            '<td>' + d["Micro Duct Vertical"] + '</td>' +
+            '<td>Micro Duct แนวดิ่ง :</td>' +
+            '<td>' + d["Micro Duct แนวดิ่ง"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Micro Duct Horizontal :</td>' +
-            '<td>' + d["Micro Duct Horizontal"] + '</td>' +
+            '<td>Micro Duct แนวขวาง :</td>' +
+            '<td>' + d["Micro Duct แนวขวาง"] + '</td>' +
             '</tr>' +
             '</table>';
     }
 
     document.addEventListener("DOMContentLoaded", function() {
-
         var dataSet = [];
         var table = null;
 
         liff.init({
-            liffId: "1655031884-bjPLyNBR"
+            liffId: "1655032626-V4QkoRMZ"
         }, () => {}, err => console.error(err.code, error.message));
 
-        function onSuccess(array) {
-            dataSet = JSON.parse(array);
+        function onSuccess(DataPass) {
+            console.log(JSON.parse(DataPass));
+            dataSet = JSON.parse(DataPass);
 
-            table = $('#example').DataTable({
+            table = $('#tabel1').DataTable({
                 data: dataSet,
                 columns: [{
                     "className": 'details-control',
@@ -141,14 +143,12 @@
                     }
                 }]
             });
-
-            $(".se-pre-con").hide("slow");
         }
 
         google.script.run.withSuccessHandler(onSuccess)
             .filterByValue();
 
-        $('#example').on('click', 'td.details-control', function() {
+        $('#tabel1').on('click', 'td.details-control', function() {
             var tr = $(this).closest('tr');
             var row = table.row(tr);
 
@@ -162,6 +162,5 @@
                 tr.addClass('shown');
             }
         });
-
     });
 </script>
