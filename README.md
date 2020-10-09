@@ -110,7 +110,7 @@ npm run deploy:prod
 <img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-10.jpg" alt="Terra Bot">
 
 ### ตัวอย่างการใช้ Regular expressions มาใช้ในการค้นหากลุ่มคำสั่ง
-<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-11.jpg" alt="Terra Bot">
+<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/expand-11.JPG" alt="Terra Bot">
 
 
 # Copyright 🏛
