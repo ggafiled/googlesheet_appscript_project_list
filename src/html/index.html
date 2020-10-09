@@ -57,49 +57,41 @@
 <script>
     function format(d) {
         // `d` is the original data object for the row
-        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+        return '<table class="table">' +
             '<tr>' +
-            '<td>ที่อยู่ :</td>' +
+            '<th>ที่อยู่ :</th>' +
             '<td>' + d["ที่อยู่"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>ชื่อผู้ติดต่อ :</td>' +
-            '<td>' + d["ชื่อผู้ติดต่อ"] + '</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td>เบอร์โทร :</td>' +
-            '<td>' + d["เบอร์โทร"] + '</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td>EMail :</td>' +
+            '<th>EMail :</th>' +
             '<td>' + d["EMail"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>จำนวน Tower :</td>' +
+            '<th>จำนวน Tower :</th>' +
             '<td>' + d["จำนวน Tower"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>จำนวนชั้นต่ออาคาร :</td>' +
+            '<th>จำนวนชั้นต่ออาคาร :</th>' +
             '<td>' + d["จำนวนชั้นต่ออาคาร"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>สำรวจออกแบบ :</td>' +
+            '<th>สำรวจออกแบบ :</th>' +
             '<td>' + d["สำรวจออกแบบ"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>ติดตั้ง IFCC (ODF) :</td>' +
+            '<th>ติดตั้ง IFCC (ODF) :</th>' +
             '<td>' + d["ติดตั้ง IFCC (ODF)"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Wall Box :</td>' +
+            '<th>Wall Box :</th>' +
             '<td>' + d["Wall Box"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Micro Duct แนวดิ่ง :</td>' +
+            '<th>Micro Duct แนวดิ่ง :</th>' +
             '<td>' + d["Micro Duct แนวดิ่ง"] + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Micro Duct แนวขวาง :</td>' +
+            '<th>Micro Duct แนวขวาง :</th>' +
             '<td>' + d["Micro Duct แนวขวาง"] + '</td>' +
             '</tr>' +
             '</table>';
@@ -118,6 +110,7 @@
             dataSet = JSON.parse(DataPass);
 
             table = $('#tabel1').DataTable({
+                responsive: true,
                 data: dataSet,
                 columns: [{
                     "className": 'details-control',

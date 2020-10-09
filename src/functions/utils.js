@@ -32,7 +32,7 @@ const filterByValue = (string) => {
         }).all();
     }
 
-    Logger.log("[filterByValue()]" + JSON.stringify(finalarray));
+    // Logger.log("[filterByValue()]" + JSON.stringify(finalarray));
     return JSON.stringify(finalarray);
 }
 
