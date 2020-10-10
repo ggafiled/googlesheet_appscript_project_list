@@ -3,7 +3,7 @@
 # Google sheet stock with app script (ระบบอัพเดตสต็อคสินค้า)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra.jpg" alt="Company Logo" width="140px" height="140px">
+<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra.jpg" alt="Company Logo" width="140px" height="50px">
 
 ระบบเบิกและจัดสต็อคอุปกรณ์ในคลังบนแพทฟอร์ม google sheet และ app script โดยมีฟังก์ชันการใช้งานตามนี้ Version 1.0.0
 
