@@ -42,6 +42,61 @@ const fmBuildingCondoName = async (replyToken, messages) => {
   }
 };
 
+const fmBuildingOperator = async (replyToken, emptyValue = false) => {
+  try {
+    const Progress = Tamotsu.Table.define(
+      {
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+      },
+      {
+        operator() {
+          return [
+            this['TOT Progress'],
+            this['AIS Progress'],
+            this['3BB Progress'],
+            this['Sinet Progress'],
+            this['FN Progress'],
+            this['True Progress'],
+          ].join('');
+        },
+      }
+    );
+
+    const query = Progress.where(function (doc) {
+      if (emptyValue) return doc.operator().trim() === '';
+      return doc.operator().trim() !== '';
+    }).all();
+    Logger.log(`[doPost()] query: ${JSON.stringify(query)}`);
+    if (query !== undefined && query !== null) {
+      let nooperatorList = '';
+      query.forEach((r) => {
+        if (r.Project.trim() !== '') {
+          nooperatorList += `${r.Project}\n`;
+        }
+      });
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? `รายชื่อโครงการที่ยังไม่ถูกเชื่อมต่อโครงข่าย\n ${nooperatorList}`
+          : `รายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายแล้ว\n ${nooperatorList}`,
+        MESSAGE_TYPE.NORMAL
+      );
+    } else {
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการใดที่ยังไม่ถูกเชื่อมต่อโครงข่ายค่ะ'
+          : 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายค่ะ',
+        MESSAGE_TYPE.NORMAL
+      );
+    }
+  } catch (error) {
+    Logger.log(`[doPost()] error: ${error}`);
+  }
+};
+
 const doPost = (e) => {
   const fmCommandRegex = new RegExp(
     /^(\bFM Building\b)[\s]*([ก-๏a-zA-Z 0-9$&+,:;=?@#|'<>.^*()%!-/\\/]+)/i
@@ -53,14 +108,22 @@ const doPost = (e) => {
   if (fmCommandRegex.test(messages.trim())) {
     Logger.log(`[doPost()] fmCommandRegex.text : ${fmCommandRegex.test(messages.trim())}`);
     Logger.log(`[doPost()] fmCommandRegex ${messages.trim().match(fmCommandRegex)}`);
-    switch (messages.trim().match(fmCommandRegex)[2]) {
-      case 'Search':
-        Logger.log(`[doPost()] Search:`);
+    switch (messages.trim().match(fmCommandRegex)[2].toLowerCase()) {
+      case 'search':
+        Logger.log(`[doPost()] search:`);
         replyMessage(
           data.events[0].replyToken,
           'https://script.google.com/macros/s/AKfycbxtBUEiPCrWkepUJm0cmXfhqoM0IZqcXEixvSFs/exec?v=project-list',
           MESSAGE_TYPE.NORMAL
         );
+        break;
+      case 'no operator':
+        Logger.log(`[doPost()] no operator:`);
+        fmBuildingOperator(data.events[0].replyToken, true);
+        break;
+      case 'operator':
+        Logger.log(`[doPost()] operator:`);
+        fmBuildingOperator(data.events[0].replyToken, false);
         break;
       default:
         Logger.log(`[doPost()] default:`);
