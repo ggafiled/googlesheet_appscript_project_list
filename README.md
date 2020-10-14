@@ -11,6 +11,11 @@
   - แชทบอทสำหรับสั่งเรียกใช้งานฟังก์ชันภายใน google app script เพื่อทำการค้นหาและแสดงสถานะงาน
   - ค้นหาและเลือกดูข้อมูลบน LIFF (LINE FRONTEND FRAMEWORK) [Demo](https://script.google.com/macros/s/AKfycbxtBUEiPCrWkepUJm0cmXfhqoM0IZqcXEixvSFs/exec?v=project-list)
 
+รวมคำสั่ง
+ - fm building search // บอทจะส่งลิงค์ LIFF มาให้
+ - fm building <ชื่อโครงการที่ต้องการจะค้นหา> // บอทจะค้นหาข้อมูลตามชื่อโครงการที่กรอกมาให้ 
+ - fm building no operator // บอทจะส่งรายชื่อโครงการที่ยังไม่ได้เชื่อมต่อโครงข่ายมาให้
+
 ตัวอย่างคำที่จะค้นหา | Survey	| IFCC (ODF) |	Wall Box	| Micro Duct Vertical	| Micro Duct Horizontal
 ------------ | ------------- | ------------- | ------------- | ------------- | -------------
 U&I Thonglor | ดำเนินการแล้วเสร็จ | ดำเนินการแล้วเสร็จ |  ดำเนินการแล้วเสร็จ |  ดำเนินการแล้วเสร็จ |  ดำเนินการแล้วเสร็จ 
