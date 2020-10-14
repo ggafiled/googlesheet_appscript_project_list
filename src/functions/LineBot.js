@@ -9,6 +9,8 @@ const MESSAGE_TYPE = {
     QUICKREPLY: 'Quickreply'
 };
 
+const slice = require('slice');
+
 function sendLineNotify() {
 
     if (String(PropertiesService.getScriptProperties().getProperty('LINE_NOTIFY_TOKEN').toString()).trim() == "") {
@@ -85,10 +87,18 @@ function replyMessageStructure(replytoken, replyText, type, items = []) {
 }
 
 function normalReplyMessage(replyText) {
-    let normalStructure = [{
-        "type": "text",
-        "text": replyText
-    }];
+    try {
+        let numOfslot = Math.ceil(replyText.length / 5000);
+        var normalStructure = [];
+        for (let i = 0; i < numOfslot; i++) {
+            normalStructure.push({
+                "type": "text",
+                "text": replyText.slice(i * 5000, (replyText.length - (i * 5000)) >= 5000 ? (i + 1) * 5000 : replyText.length)
+            });
+        }
+    } catch (error) {
+        Logger.log("normalReplyMessage() :" + error);
+    }
     return normalStructure;
 }
 
