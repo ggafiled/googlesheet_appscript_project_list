@@ -9,8 +9,6 @@ const MESSAGE_TYPE = {
     QUICKREPLY: 'Quickreply'
 };
 
-const slice = require('slice');
-
 function sendLineNotify() {
 
     if (String(PropertiesService.getScriptProperties().getProperty('LINE_NOTIFY_TOKEN').toString()).trim() == "") {
