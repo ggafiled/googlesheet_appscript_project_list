@@ -42,6 +42,252 @@ const fmBuildingCondoName = async (replyToken, messages) => {
   }
 };
 
+/// ------------tot--------------///
+const fmBuildingTOT = async (replyToken, emptyValue = false) => {
+  try {
+    const Progress = Tamotsu.Table.define(
+      {
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+      },
+      {
+        operator() {
+          return [this['TOT Progress']].join('');
+        },
+      }
+    );
+
+    const query = Progress.where(function (doc) {
+      if (emptyValue) return doc.operator().trim() === '';
+      return doc.operator().trim() !== '';
+    }).all();
+    Logger.log(`[doPost()] query: ${JSON.stringify(query)}`);
+    if (query !== undefined && query !== null) {
+      let nooperatorList = '';
+      query.forEach((r) => {
+        if (r.Project.trim() !== '') {
+          nooperatorList += `${r.Project}\n`;
+        }
+      });
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? `รายชื่อโครงการTOTที่ยังไม่ถูกเชื่อมต่อโครงข่าย\n ${nooperatorList}`
+          : `รายชื่อโครงการTOTที่ถูกเชื่อมต่อโครงข่ายแล้ว\n ${nooperatorList}`,
+        MESSAGE_TYPE.NORMAL
+      );
+    } else {
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการใดที่ยังไม่ถูกเชื่อมต่อโครงข่ายค่ะ'
+          : 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายค่ะ',
+        MESSAGE_TYPE.NORMAL
+      );
+    }
+  } catch (error) {
+    Logger.log(`[doPost()] error: ${error}`);
+  }
+};
+
+/// ------------ais--------------///
+const fmBuildingAis = async (replyToken, emptyValue = false) => {
+  try {
+    const Progress = Tamotsu.Table.define(
+      {
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+      },
+      {
+        operator() {
+          return [this['AIS Progress']].join('');
+        },
+      }
+    );
+
+    const query = Progress.where(function (doc) {
+      if (emptyValue) return doc.operator().trim() === '';
+      return doc.operator().trim() !== '';
+    }).all();
+    Logger.log(`[doPost()] query: ${JSON.stringify(query)}`);
+    if (query !== undefined && query !== null) {
+      let nooperatorList = '';
+      query.forEach((r) => {
+        if (r.Project.trim() !== '') {
+          nooperatorList += `${r.Project}\n`;
+        }
+      });
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? `รายชื่อโครงการAISที่ยังไม่ถูกเชื่อมต่อโครงข่าย\n ${nooperatorList}`
+          : `รายชื่อโครงการAISที่ถูกเชื่อมต่อโครงข่ายแล้ว\n ${nooperatorList}`,
+        MESSAGE_TYPE.NORMAL
+      );
+    } else {
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการใดที่ยังไม่ถูกเชื่อมต่อโครงข่ายค่ะ'
+          : 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายค่ะ',
+        MESSAGE_TYPE.NORMAL
+      );
+    }
+  } catch (error) {
+    Logger.log(`[doPost()] error: ${error}`);
+  }
+};
+
+/// ------------3bb--------------///
+const fmBuilding3bb = async (replyToken, emptyValue = false) => {
+  try {
+    const Progress = Tamotsu.Table.define(
+      {
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+      },
+      {
+        operator() {
+          return [this['3BB Progress']].join('');
+        },
+      }
+    );
+
+    const query = Progress.where(function (doc) {
+      if (emptyValue) return doc.operator().trim() === '';
+      return doc.operator().trim() !== '';
+    }).all();
+    Logger.log(`[doPost()] query: ${JSON.stringify(query)}`);
+    if (query !== undefined && query !== null) {
+      let nooperatorList = '';
+      query.forEach((r) => {
+        if (r.Project.trim() !== '') {
+          nooperatorList += `${r.Project}\n`;
+        }
+      });
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? `รายชื่อโครงการ3BBที่ยังไม่ถูกเชื่อมต่อโครงข่าย\n ${nooperatorList}`
+          : `รายชื่อโครงการ3BBที่ถูกเชื่อมต่อโครงข่ายแล้ว\n ${nooperatorList}`,
+        MESSAGE_TYPE.NORMAL
+      );
+    } else {
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการใดที่ยังไม่ถูกเชื่อมต่อโครงข่ายค่ะ'
+          : 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายค่ะ',
+        MESSAGE_TYPE.NORMAL
+      );
+    }
+  } catch (error) {
+    Logger.log(`[doPost()] error: ${error}`);
+  }
+};
+
+/// ------------Sinet--------------///
+const fmBuildingSinet = async (replyToken, emptyValue = false) => {
+  try {
+    const Progress = Tamotsu.Table.define(
+      {
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+      },
+      {
+        operator() {
+          return [this['Sinet Progress']].join('');
+        },
+      }
+    );
+
+    const query = Progress.where(function (doc) {
+      if (emptyValue) return doc.operator().trim() === '';
+      return doc.operator().trim() !== '';
+    }).all();
+    Logger.log(`[doPost()] query: ${JSON.stringify(query)}`);
+    if (query !== undefined && query !== null) {
+      let nooperatorList = '';
+      query.forEach((r) => {
+        if (r.Project.trim() !== '') {
+          nooperatorList += `${r.Project}\n`;
+        }
+      });
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? `รายชื่อโครงการSINETที่ยังไม่ถูกเชื่อมต่อโครงข่าย\n ${nooperatorList}`
+          : `รายชื่อโครงการSINETที่ถูกเชื่อมต่อโครงข่ายแล้ว\n ${nooperatorList}`,
+        MESSAGE_TYPE.NORMAL
+      );
+    } else {
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการใดที่ยังไม่ถูกเชื่อมต่อโครงข่ายค่ะ'
+          : 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายค่ะ',
+        MESSAGE_TYPE.NORMAL
+      );
+    }
+  } catch (error) {
+    Logger.log(`[doPost()] error: ${error}`);
+  }
+};
+
+/// ------------FN--------------///
+const fmBuildingFN = async (replyToken, emptyValue = false) => {
+  try {
+    const Progress = Tamotsu.Table.define(
+      {
+        sheetName: 'Progress',
+        rowShift: 1,
+        columnShift: 0,
+      },
+      {
+        operator() {
+          return [this['FN Progress']].join('');
+        },
+      }
+    );
+
+    const query = Progress.where(function (doc) {
+      if (emptyValue) return doc.operator().trim() === '';
+      return doc.operator().trim() !== '';
+    }).all();
+    Logger.log(`[doPost()] query: ${JSON.stringify(query)}`);
+    if (query !== undefined && query !== null) {
+      let nooperatorList = '';
+      query.forEach((r) => {
+        if (r.Project.trim() !== '') {
+          nooperatorList += `${r.Project}\n`;
+        }
+      });
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? `รายชื่อโครงการFMที่ยังไม่ถูกเชื่อมต่อโครงข่าย\n ${nooperatorList}`
+          : `รายชื่อโครงการFMที่ถูกเชื่อมต่อโครงข่ายแล้ว\n ${nooperatorList}`,
+        MESSAGE_TYPE.NORMAL
+      );
+    } else {
+      await replyMessage(
+        replyToken,
+        emptyValue
+          ? 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการใดที่ยังไม่ถูกเชื่อมต่อโครงข่ายค่ะ'
+          : 'ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายค่ะ',
+        MESSAGE_TYPE.NORMAL
+      );
+    }
+  } catch (error) {
+    Logger.log(`[doPost()] error: ${error}`);
+  }
+};
+
+/// ------------mix--------------///
 const fmBuildingOperator = async (replyToken, emptyValue = false) => {
   try {
     const Progress = Tamotsu.Table.define(
@@ -124,6 +370,46 @@ const doPost = (e) => {
       case 'operator':
         Logger.log(`[doPost()] operator:`);
         fmBuildingOperator(data.events[0].replyToken, false);
+        break;
+      case 'no tot':
+        Logger.log(`[doPost()] no tot:`);
+        fmBuildingTOT(data.events[0].replyToken, true);
+        break;
+      case 'tot':
+        Logger.log(`[doPost()] tot:`);
+        fmBuildingTOT(data.events[0].replyToken, false);
+        break;
+      case 'no ais':
+        Logger.log(`[doPost()] no ais:`);
+        fmBuildingAis(data.events[0].replyToken, true);
+        break;
+      case 'ais':
+        Logger.log(`[doPost()] ais:`);
+        fmBuildingAis(data.events[0].replyToken, false);
+        break;
+      case 'no 3bb':
+        Logger.log(`[doPost()] no 3bb:`);
+        fmBuilding3bb(data.events[0].replyToken, true);
+        break;
+      case '3bb':
+        Logger.log(`[doPost()] 3bb:`);
+        fmBuilding3bb(data.events[0].replyToken, false);
+        break;
+      case 'no sinet':
+        Logger.log(`[doPost()] no sinet:`);
+        fmBuildingSinet(data.events[0].replyToken, true);
+        break;
+      case 'sinet':
+        Logger.log(`[doPost()] sinet:`);
+        fmBuildingSinet(data.events[0].replyToken, false);
+        break;
+      case 'no fn':
+        Logger.log(`[doPost()] no fn:`);
+        fmBuildingFN(data.events[0].replyToken, true);
+        break;
+      case 'fn':
+        Logger.log(`[doPost()] fn:`);
+        fmBuildingFN(data.events[0].replyToken, false);
         break;
       default:
         Logger.log(`[doPost()] default:`);
