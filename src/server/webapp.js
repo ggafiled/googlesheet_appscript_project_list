@@ -54,9 +54,10 @@ const fmBuildingOperator = async (
   headers = ''
 ) => {
   try {
-    Logger.log(`[fmBuildingOperator()] source: ${JSON.stringify(sourceObj)}`);
+    let userProfile = {};
     try {
-      const userProfile = await getUserProfile(sourceObj.source.userId, sourceObj.source.groupId);
+      userProfile = await getUserProfile(sourceObj.source.userId, sourceObj.source.groupId);
+      userProfile.displayName = userProfile.displayName ? userProfile.displayName : 'ไม่ทราบชื่อ';
       Logger.log(`[sendLineNotify()] user information.${userProfile}`);
       await sendLineNotify(
         `ได้รับคำสั่งจากคุณ ${
@@ -101,10 +102,14 @@ const fmBuildingOperator = async (
       await replyMessage(
         sourceObj.replyToken,
         emptyValue
-          ? `รายชื่อโครงการที่ยังไม่ถูกเชื่อมต่อโครงข่าย ${headers}\n ${
+          ? `คุณ @${
+              userProfile.displayName
+            } รายชื่อโครงการที่ยังไม่ถูกเชื่อมต่อโครงข่าย ${headers}\n ${
               nooperatorList.trim() === '' ? 'ไม่พบข้อมูลค่ะ' : nooperatorList
             }`
-          : `รายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายแล้ว ${headers}\n ${
+          : `คุณ @${
+              userProfile.displayName
+            } รายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายแล้ว ${headers}\n ${
               nooperatorList.trim() === '' ? 'ไม่พบข้อมูลค่ะ' : nooperatorList
             }`,
         MESSAGE_TYPE.NORMAL
@@ -113,8 +118,8 @@ const fmBuildingOperator = async (
       await replyMessage(
         sourceObj.replyToken,
         emptyValue
-          ? `ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการใดที่ยังไม่ถูกเชื่อมต่อโครงข่ายค่ะ ${headers}`
-          : `ขออภัยค่ะ 🙏 ไม่มีรายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายค่ะ ${headers}`,
+          ? `ขออภัยค่ะ 🙏 คุณ @${userProfile.displayName} ไม่มีรายชื่อโครงการใดที่ยังไม่ถูกเชื่อมต่อโครงข่ายค่ะ ${headers}`
+          : `ขออภัยค่ะ 🙏 คุณ @${userProfile.displayName} ไม่มีรายชื่อโครงการที่ถูกเชื่อมต่อโครงข่ายค่ะ ${headers}`,
         MESSAGE_TYPE.NORMAL
       );
     }
