@@ -17,8 +17,22 @@ function loadUi() {
   });
 }
 
-const fmBuildingCondoName = async (replyToken, messages) => {
+const fmBuildingCondoName = async (sourceObj, messages) => {
   try {
+    let userProfile = {};
+    try {
+      userProfile = await getUserProfile(sourceObj.source.userId, sourceObj.source.groupId);
+      userProfile.displayName = userProfile.displayName ? userProfile.displayName : 'ไม่ทราบชื่อ';
+      Logger.log(`[sendLineNotify()] user information.${userProfile}`);
+      await sendLineNotify(
+        `ได้รับคำสั่งจากคุณ ${
+          userProfile.displayName !== '' ? userProfile.displayName : 'ไม่ทราบชื่อ'
+        } แล้วค่ะ`
+      );
+    } catch (error) {
+      Logger.log('[sendLineNotify()] fails.');
+    }
+
     const Progress = Tamotsu.Table.define({
       sheetName: 'Progress',
       rowShift: 1,
@@ -31,14 +45,14 @@ const fmBuildingCondoName = async (replyToken, messages) => {
     Logger.log(`[fmBuildingCondoName()] query: ${query}`);
     if (query !== undefined && query !== null) {
       await replyMessage(
-        replyToken,
-        `ที่อยู่: ${query['ที่อยู่']}\nชื่อผู้ติดต่อ: ${query['ชื่อผู้ติดต่อ']}\nเบอร์โทร: ${query['เบอร์โทร']}\nEMail: ${query.EMail}\nจำนวน Tower: ${query['จำนวน Tower']}\nจำนวนชั้นต่ออาคาร: ${query['จำนวนชั้นต่ออาคาร']}\nจำนวนห้อง: ${query['จำนวนห้อง']}\nสำรวจออกแบบ: ${query['สำรวจออกแบบ']}\nIFCC (ODF) : ${query['ติดตั้ง IFCC (ODF)']}\nWall Box : ${query['Wall Box']}\nMicro Duct แนวดิ่ง : ${query['Micro Duct แนวดิ่ง']}\nMicro Duct แนวขวาง : ${query['Micro Duct แนวขวาง']}\nTOT Progress : ${query['TOT Progress']}\nAIS Progress : ${query['AIS Progress']}\n3BB Progress : ${query['3BB Progress']}`,
+        sourceObj.replyToken,
+        `คุณ @${userProfile.displayName} \nที่อยู่: ${query['ที่อยู่']}\nชื่อผู้ติดต่อ: ${query['ชื่อผู้ติดต่อ']}\nเบอร์โทร: ${query['เบอร์โทร']}\nEMail: ${query.EMail}\nจำนวน Tower: ${query['จำนวน Tower']}\nจำนวนชั้นต่ออาคาร: ${query['จำนวนชั้นต่ออาคาร']}\nจำนวนห้อง: ${query['จำนวนห้อง']}\nสำรวจออกแบบ: ${query['สำรวจออกแบบ']}\nIFCC (ODF) : ${query['ติดตั้ง IFCC (ODF)']}\nWall Box : ${query['Wall Box']}\nMicro Duct แนวดิ่ง : ${query['Micro Duct แนวดิ่ง']}\nMicro Duct แนวขวาง : ${query['Micro Duct แนวขวาง']}\nTOT Progress : ${query['TOT Progress']}\nAIS Progress : ${query['AIS Progress']}\n3BB Progress : ${query['3BB Progress']}`,
         MESSAGE_TYPE.NORMAL
       );
     } else {
       await replyMessage(
-        replyToken,
-        'ขออภัยค่ะ 🙏 ไม่พบรายชื่อโครงการดังกล่าว\n(คำแนะนำ: อาจสะกดผิดหรือเว้นวรรคผิด)',
+        sourceObj.replyToken,
+        `คุณ @${userProfile.displayName}\nขออภัยค่ะ 🙏 ไม่พบรายชื่อโครงการดังกล่าว\n(คำแนะนำ: อาจสะกดผิดหรือเว้นวรรคผิด)`,
         MESSAGE_TYPE.NORMAL
       );
     }
@@ -221,10 +235,7 @@ const doPost = async (e) => {
         break;
       default:
         Logger.log(`[doPost()] default:`);
-        await fmBuildingCondoName(
-          data.events[0].replyToken,
-          String(messages.trim().match(fmCommandRegex)[2])
-        );
+        await fmBuildingCondoName(data.events[0], String(messages.trim().match(fmCommandRegex)[2]));
         break;
     }
   } else {
