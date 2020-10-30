@@ -1,34 +1,31 @@
 const { render } = require('../functions/utils');
 const {
-  replyMessage,
-  MESSAGE_TYPE,
-  sendLineNotify,
-  getUserProfile,
+    replyMessage,
+    MESSAGE_TYPE,
+    sendLineNotify,
+    getUserProfile,
 } = require('../functions/LineBot');
 
 const Route = {};
-Route.path = function (routeName, callback) {
-  Route[routeName] = callback;
+Route.path = function(routeName, callback) {
+    Route[routeName] = callback;
 };
 
 function loadUi() {
-  return render('index', {
-    title: '- 🕵️‍♀️ Project List -',
-  });
+    return render('index');
 }
 
-const fmBuildingCondoName = async (sourceObj, messages) => {
-  try {
-    let userProfile = {};
-    try {
-      userProfile = await getUserProfile(sourceObj.source.userId, sourceObj.source.groupId);
-      userProfile.displayName = userProfile.displayName ? userProfile.displayName : 'ไม่ทราบชื่อ';
-      Logger.log(`[sendLineNotify()] user information.${userProfile}`);
-      await sendLineNotify(
-        `ได้รับคำสั่งจากคุณ 
-                ${
-                  userProfile.displayName !== '' ? `@${userProfile.displayName}` : 'ไม่ทราบชื่อ'
-                } แล้วค่ะ`
+const fmBuildingCondoName = async(sourceObj, messages) => {
+        try {
+            let userProfile = {};
+            try {
+                userProfile = await getUserProfile(sourceObj.source.userId, sourceObj.source.groupId);
+                userProfile.displayName = userProfile.displayName ? userProfile.displayName : 'ไม่ทราบชื่อ';
+                Logger.log(`[sendLineNotify()] user information.${userProfile}`);
+                await sendLineNotify(
+                        `ได้รับคำสั่งจากคุณ ${
+          userProfile.displayName !== '' ? `@${userProfile.displayName}` : 'ไม่ทราบชื่อ'
+        } แล้วค่ะ`
       );
       Logger.log(`[sendLineNotify()] ได้รับคำสั่งจากคุณ 
                 ${
