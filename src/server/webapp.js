@@ -1,29 +1,29 @@
-const { render } = require('../functions/utils');
+const { render, filterByValueLike } = require('../functions/utils');
 const {
-    replyMessage,
-    MESSAGE_TYPE,
-    sendLineNotify,
-    getUserProfile,
+  replyMessage,
+  MESSAGE_TYPE,
+  sendLineNotify,
+  getUserProfile,
 } = require('../functions/LineBot');
 
 const Route = {};
-Route.path = function(routeName, callback) {
-    Route[routeName] = callback;
+Route.path = function (routeName, callback) {
+  Route[routeName] = callback;
 };
 
 function loadUi() {
-    return render('index');
+  return render('index');
 }
 
-const fmBuildingCondoName = async(sourceObj, messages) => {
-        try {
-            let userProfile = {};
-            try {
-                userProfile = await getUserProfile(sourceObj.source.userId, sourceObj.source.groupId);
-                userProfile.displayName = userProfile.displayName ? userProfile.displayName : 'ไม่ทราบชื่อ';
-                Logger.log(`[sendLineNotify()] user information.${userProfile}`);
-                await sendLineNotify(
-                        `ได้รับคำสั่งจากคุณ ${
+const fmBuildingCondoName = async (sourceObj, messages) => {
+  try {
+    let userProfile = {};
+    try {
+      userProfile = await getUserProfile(sourceObj.source.userId, sourceObj.source.groupId);
+      userProfile.displayName = userProfile.displayName ? userProfile.displayName : 'ไม่ทราบชื่อ';
+      Logger.log(`[sendLineNotify()] user information.${userProfile}`);
+      await sendLineNotify(
+        `ได้รับคำสั่งจากคุณ ${
           userProfile.displayName !== '' ? `@${userProfile.displayName}` : 'ไม่ทราบชื่อ'
         } แล้วค่ะ`
       );
@@ -64,13 +64,37 @@ const fmBuildingCondoName = async(sourceObj, messages) => {
         MESSAGE_TYPE.NORMAL
       );
     } else {
-      await replyMessage(
-        sourceObj.replyToken,
-        `คุณ ${
-          userProfile.displayName !== '' ? `@${userProfile.displayName}` : 'ไม่ทราบชื่อ'
-        }\nขออภัยค่ะ 🙏 ไม่พบรายชื่อโครงการดังกล่าว\n(คำแนะนำ: อาจสะกดผิดหรือเว้นวรรคผิด)`,
-        MESSAGE_TYPE.NORMAL
-      );
+      const likeCondoname = await filterByValueLike(messages);
+      Logger.log(`fmBuildingCondoName(): else ${JSON.stringify(likeCondoname)}`);
+      if (likeCondoname.length > 0) {
+        Logger.log(`fmBuildingCondoName(): else has %LIKE% ${JSON.stringify(likeCondoname)}`);
+        /**
+         * ถ้าหากพบรายชื่อโครงการที่ชื่อคล้ายกันจะทำงานที่นี่
+         */
+        let condoListOfName = '';
+        likeCondoname.forEach((elem) => {
+          condoListOfName += `${elem.Project}\n`;
+        });
+        await replyMessage(
+          sourceObj.replyToken,
+          `คุณ ${
+            userProfile.displayName !== '' ? `@${userProfile.displayName}` : 'ไม่ทราบชื่อ'
+          } กรุณาเลือกโครงการด้านล่าง\n${condoListOfName}`,
+          MESSAGE_TYPE.NORMAL
+        );
+      } else {
+        Logger.log(`fmBuildingCondoName(): else not found ${JSON.stringify(likeCondoname)}`);
+        /**
+         * ไม่พบรายชื่อโครงการที่ชื่อคล้ายกันจะทำงานที่ else
+         */
+        await replyMessage(
+          sourceObj.replyToken,
+          `คุณ ${
+            userProfile.displayName !== '' ? `@${userProfile.displayName}` : 'ไม่ทราบชื่อ'
+          }\nขออภัยค่ะ 🙏 ไม่พบรายชื่อโครงการดังกล่าว\n(คำแนะนำ: อาจสะกดผิดหรือเว้นวรรคผิด)`,
+          MESSAGE_TYPE.NORMAL
+        );
+      }
     }
   } catch (error) {
     Logger.log(`[fmBuildingCondoName()] error: ${error}`);
