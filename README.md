@@ -5,12 +5,13 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 <img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra.jpg" alt="Company Logo" width="140px" height="50px">
 
-ระบบเบิกและจัดสต็อคอุปกรณ์ในคลังบนแพทฟอร์ม google sheet และ app script โดยมีฟังก์ชันการใช้งานตามนี้ Version 1.0.0
+ระบบเบิกและจัดสต็อคอุปกรณ์ในคลังบนแพทฟอร์ม google sheet และ app script โดยมีฟังก์ชันการใช้งานตามนี้ Version 1.2.0
 
 - สามารถแสดงหน้าต่างการใช้งานเมื่อเปิดเข้าไฟล์ได้
 - แชทบอทสำหรับสั่งเรียกใช้งานฟังก์ชันภายใน google app script เพื่อทำการค้นหาและแสดงสถานะงาน
 - ค้นหาและเลือกดูข้อมูลบน LIFF (LINE FRONTEND FRAMEWORK) [Demo](https://script.google.com/macros/s/AKfycbxtBUEiPCrWkepUJm0cmXfhqoM0IZqcXEixvSFs/exec?v=project-list)
 - ตัดข้อความที่จะส่งไปให้ไลน์อัตโนมัติถ้าข้อความเกิน 5,000 ตัวอักษร (5,000 ตัวอักษร / 1 buble)
+- ระบบสามารถแสดงรายชื่อโครงการที่มีชื่อคล้ายกัน เมื่อ ผู้ใช้งานป้อนชื่อไม่ตรงในฐานข้อมูล
 
 รวมคำสั่ง
 
@@ -144,6 +145,10 @@ npm run deploy:prod
 ### ตัวอย่างหน้าจอการใช้งานคำสั่ง Chatbot
 
 <img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra-project-bot01.jpg" alt="Terra Bot" width="340" height="480">
+
+### ตัวอย่างหน้าจอบอทแสดงรายชื่อโครงการที่มีชื่อคล้ายกัน เมื่อป้อนรายชื่อไม่ถูกต้อง
+
+<img src="https://github.com/ggafiled/googlesheet_appscript_project_list/blob/master/img/terra-project-bot02.jpg" alt="Terra Bot" width="340" height="480">
 
 ### ตัวอย่างหน้าจอการใช้งาน LIFF
 
